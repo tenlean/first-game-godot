@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b705bmuax64iy" path="res://assets/sprites/world_tileset.png" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://bpi4u8rtvgtnv" path="res://scenes/platform.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://0p4wlvmapml1" path="res://scenes/coin.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://db7ffdpkeeg4d" path="res://scenes/killzone.tscn" id="5_iywne"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_yqjtg")
@@ -171,6 +172,8 @@ texture = ExtResource("2_yqjtg")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_lnu2h")
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p57ef"]
+
 [sub_resource type="Animation" id="Animation_lnu2h"]
 length = 0.001
 tracks/0/type = "value"
@@ -223,29 +226,41 @@ position = Vector2(66, 45)
 position = Vector2(0, -7)
 zoom = Vector2(4, 4)
 process_callback = 0
+limit_bottom = 120
+limit_smoothed = true
 position_smoothing_enabled = true
 
-[node name="Platform" parent="." unique_id=606456152 instance=ExtResource("3_lnu2h")]
-position = Vector2(33, 11)
+[node name="Killzone" parent="." unique_id=1336258685 instance=ExtResource("5_iywne")]
+position = Vector2(75, 140)
 
-[node name="Platform2" parent="." unique_id=1371606591 instance=ExtResource("3_lnu2h")]
-position = Vector2(370, 52)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=1238130571]
+shape = SubResource("WorldBoundaryShape2D_p57ef")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform2" unique_id=2026690249]
-libraries/ = SubResource("AnimationLibrary_iywne")
-autoplay = &"move"
+[node name="Coins" type="Node" parent="." unique_id=1955216774]
 
-[node name="Coin" parent="." unique_id=560417412 instance=ExtResource("4_lbhrr")]
+[node name="Coin" parent="Coins" unique_id=560417412 instance=ExtResource("4_lbhrr")]
 position = Vector2(88, 67)
 
-[node name="Coin2" parent="." unique_id=946010421 instance=ExtResource("4_lbhrr")]
+[node name="Coin2" parent="Coins" unique_id=946010421 instance=ExtResource("4_lbhrr")]
 position = Vector2(216, 68)
 
-[node name="Coin3" parent="." unique_id=1637274413 instance=ExtResource("4_lbhrr")]
+[node name="Coin3" parent="Coins" unique_id=1637274413 instance=ExtResource("4_lbhrr")]
 position = Vector2(232, 68)
 
-[node name="Coin4" parent="." unique_id=2051983121 instance=ExtResource("4_lbhrr")]
+[node name="Coin4" parent="Coins" unique_id=2051983121 instance=ExtResource("4_lbhrr")]
 position = Vector2(104, -44)
 
-[node name="Coin5" parent="." unique_id=556317239 instance=ExtResource("4_lbhrr")]
+[node name="Coin5" parent="Coins" unique_id=556317239 instance=ExtResource("4_lbhrr")]
 position = Vector2(504, 37)
+
+[node name="Platforms" type="Node" parent="." unique_id=2146974888]
+
+[node name="Platform" parent="Platforms" unique_id=606456152 instance=ExtResource("3_lnu2h")]
+position = Vector2(33, 11)
+
+[node name="Platform2" parent="Platforms" unique_id=1371606591 instance=ExtResource("3_lnu2h")]
+position = Vector2(370, 52)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Platform2" unique_id=2026690249]
+libraries/ = SubResource("AnimationLibrary_iywne")
+autoplay = &"move"
