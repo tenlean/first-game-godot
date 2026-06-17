@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://0p4wlvmapml1" path="res://scenes/coin.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://db7ffdpkeeg4d" path="res://scenes/killzone.tscn" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://byog3ce28cbst" path="res://scenes/slime.tscn" id="6_p57ef"]
+[ext_resource type="FontFile" uid="uid://cb7qenqfmqbf3" path="res://assets/fonts/PixelOperator8.ttf" id="7_u5sy4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_yqjtg")
@@ -283,3 +284,37 @@ autoplay = &"move"
 
 [node name="Slime" parent="." unique_id=780118981 instance=ExtResource("6_p57ef")]
 position = Vector2(528, 80)
+
+[node name="Labels" type="Node" parent="." unique_id=2113458850]
+
+[node name="Label" type="Label" parent="Labels" unique_id=335851964]
+offset_left = -115.0
+offset_top = 78.0
+offset_right = -21.0
+offset_bottom = 93.0
+theme_override_colors/font_color = Color(0.011764706, 0.14901961, 0.34901962, 1)
+theme_override_fonts/font = ExtResource("7_u5sy4")
+theme_override_font_sizes/font_size = 8
+text = "Space to jump."
+
+[node name="Label2" type="Label" parent="Labels" unique_id=670492021]
+offset_left = 372.0
+offset_top = 72.0
+offset_right = 466.0
+offset_bottom = 91.0
+theme_override_colors/font_color = Color(0.011764706, 0.14901961, 0.34901962, 1)
+theme_override_fonts/font = ExtResource("7_u5sy4")
+theme_override_font_sizes/font_size = 8
+text = "Falling hurts.
+"
+
+[node name="Label3" type="Label" parent="Labels" unique_id=1736108355]
+offset_left = 716.0
+offset_top = -60.0
+offset_right = 810.0
+offset_bottom = -41.0
+theme_override_colors/font_color = Color(0.011764706, 0.14901961, 0.34901962, 1)
+theme_override_fonts/font = ExtResource("7_u5sy4")
+theme_override_font_sizes/font_size = 8
+text = "Almost there.
+"
